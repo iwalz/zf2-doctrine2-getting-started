@@ -40,6 +40,16 @@ return array(
         					),
         			),
         	),
+        	'product' => array(
+        			'type' => 'Zend\Mvc\Router\Http\Literal',
+        			'options' => array(
+        					'route'    => '/product',
+        					'defaults' => array(
+        							'controller' => 'Application\Controller\Product',
+        							'action'     => 'create',
+        					),
+        			),
+        	),
             // The following is a route to simplify getting started creating
             // new controllers and actions without needing to create a new
             // module. Simply drop new controllers in, and you can access them
@@ -91,6 +101,7 @@ return array(
         'invokables' => array(
             'Application\Controller\Index' => 'Application\Controller\IndexController',
             'Application\Controller\Bug' => 'Application\Controller\BugController',
+            'Application\Controller\Product' => 'Application\Controller\ProductController',
             'Application\Controller\User' => 'Application\Controller\UserController'
         ),
     ),

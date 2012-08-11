@@ -29,6 +29,11 @@ class BugController extends AbstractActionController
     	return new ViewModel();
     }
     
+    public function dashboardAction()
+    {
+    	return new ViewModel();
+    }
+    
     public function listAction()
     {
     	return new ViewModel();
