@@ -34,6 +34,7 @@
           <div class="nav-collapse">
             <ul class="nav">
               <li class="active"><a href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Home') ?></a></li>
+              <li class="active"><a href="<?php echo $this->url('bug') ?>"><?php echo $this->translate('Bug') ?></a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -41,7 +42,17 @@
     </div>
 
     <div class="container">
-
+	<div class="hero-unit">
+    	<h1><?php echo sprintf($this->translate('Welcome to %sZend Framework 2%s'), '<span class="zf-green">', '</span>') ?></h1>
+    	<p><?php echo sprintf($this->translate('
+    			Congratulations! 
+    			You have successfully installed the %sZF2 Skeleton Application%s and the %sdoctrine2 Getting-Started%s. 
+    			You are currently running Zend Framework version %s. 
+    			This skeleton can serve as a simple starting point for you to begin building your application on ZF2.'), '<a href="https://github.com/zendframework/ZendSkeletonApplication" target="_blank">', '</a>', '<a href="https://github.com/doctrine/doctrine2-orm-tutorial" target="_blank">', '</a>', \Zend\Version::VERSION) ?></p>
+    	<p><a class="btn btn-success btn-large" href="https://github.com/zendframework/zf2" target="_blank"><?php echo $this->translate('Fork Zend Framework 2 on GitHub') ?> &raquo;</a>
+    	<a class="btn btn-success btn-large" href="https://github.com/doctrine/doctrine2-orm-tutorial" target="_blank"><?php echo $this->translate('Fork doctrine2 Getting-Started on GitHub') ?> &raquo;</a>
+    	<a class="btn btn-success btn-large" href="https://github.com/iwalz/ZendSkeletonApplication" target="_blank"><?php echo $this->translate('Fork doctrine2/zf2 Skeleton on GitHub') ?> &raquo;</a></p>
+	</div>
       <?php echo $this->content; ?>
 
       <hr>

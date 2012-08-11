@@ -10,6 +10,7 @@
 namespace Application;
 
 use Zend\Mvc\ModuleRouteListener;
+use Doctrine\ORM\Tools\Setup;
 
 class Module
 {
@@ -19,6 +20,7 @@ class Module
         $eventManager        = $e->getApplication()->getEventManager();
         $moduleRouteListener = new ModuleRouteListener();
         $moduleRouteListener->attach($eventManager);
+        $e->setParam("entityManager", $this->getEntityManager());
     }
 
     public function getConfig()
@@ -35,5 +37,10 @@ class Module
                 ),
             ),
         );
+    }
+    
+    private function getEntitymanager()
+    {
+    	return include __DIR__."/../../config/doctrine/bootstrap_doctrine.php";
     }
 }

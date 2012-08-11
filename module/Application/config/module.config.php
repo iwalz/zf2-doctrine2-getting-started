@@ -20,6 +20,26 @@ return array(
                     ),
                 ),
             ),
+        	'bug' => array(
+        			'type' => 'Zend\Mvc\Router\Http\Literal',
+        			'options' => array(
+        					'route'    => '/bug',
+        					'defaults' => array(
+        							'controller' => 'Application\Controller\Bug',
+        							'action'     => 'index',
+        					),
+        			),
+        	),
+        	'user' => array(
+        			'type' => 'Zend\Mvc\Router\Http\Literal',
+        			'options' => array(
+        					'route'    => '/user',
+        					'defaults' => array(
+        							'controller' => 'Application\Controller\User',
+        							'action'     => 'create',
+        					),
+        			),
+        	),
             // The following is a route to simplify getting started creating
             // new controllers and actions without needing to create a new
             // module. Simply drop new controllers in, and you can access them
@@ -69,7 +89,9 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'Application\Controller\Index' => 'Application\Controller\IndexController'
+            'Application\Controller\Index' => 'Application\Controller\IndexController',
+            'Application\Controller\Bug' => 'Application\Controller\BugController',
+            'Application\Controller\User' => 'Application\Controller\UserController'
         ),
     ),
     'view_manager' => array(
