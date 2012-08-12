@@ -1,4 +1,4 @@
-ZendSkeletonApplication
+ZF2 Skeleton & Doctrine2 Getting Started
 =======================
 
 Introduction
