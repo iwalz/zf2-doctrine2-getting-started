@@ -31,7 +31,9 @@ Creating database scheme
 ------------------------
 If you've installed doctrine from within this composer file, you've to change "vendor/doctrine/orm/bin/doctrine.php" on line on line 28:
 ```php
-   $configFile = getcwd() . DIRECTORY_SEPARATOR . 'config'. DIRECTORY_SEPARATOR .'doctrine'. DIRECTORY_SEPARATOR .'cli-config.php';
+   $configFile = getcwd() . DIRECTORY_SEPARATOR . 
+   		'config'. DIRECTORY_SEPARATOR .
+   		'doctrine'. DIRECTORY_SEPARATOR .'cli-config.php';
 ```
 After that you can create the database scheme:
 
@@ -53,7 +55,7 @@ Virtual Host
 ------------
 Afterwards, set up a virtual host to point to the public/ directory of the
 project and you should be ready to go!
-
+```xml
 <VirtualHost *:80>
 	ServerName skeleton.local
 	DocumentRoot "/var/www/skeleton/public/"
@@ -65,3 +67,4 @@ project and you should be ready to go!
 	</Directory>
 
 </VirtualHost>
+```
