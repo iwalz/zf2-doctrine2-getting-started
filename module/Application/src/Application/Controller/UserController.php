@@ -38,40 +38,4 @@ class UserController extends AbstractActionController
     	}
         return $view;
     }
-    
-    public function deleteAction()
-    {
-    	$view = new ViewModel();
-    	$request = $this->getRequest();
-    	$entityManager = $this->getEvent()->getParam("entityManager");
-    	
-    	if($request->isPost())
-    	{
-    		$userId = $request->getPost()->user;
-    		$user = $entityManager->find("User", $userId);
-    		
-    		$dql = "SELECT b, e, r FROM Bug b JOIN b.engineer e JOIN b.reporter r ".
-    			"WHERE (e.id = ?1 OR r.id = ?1) ORDER BY b.created DESC";
-    	
-    		$bugs = $entityManager->createQuery($dql)
-    		->setParameter(1, $userId)
-    		->setMaxResults(15)
-    		->getResult();
-    		
-    		foreach($bugs as $bug)
-    		{
-    			$entityManager->remove($bug);
-    		}
-    		$entityManager->remove($user);
-    		$entityManager->flush();
-    		$view->setTemplate('application/user/delete_post');
-    	}
-    	else
-    	{
-    		$users = $entityManager->getRepository('User')->findAll();
-    		$view->setVariable('users', $users);
-    	}
-    	
-    	return $view;
-    }
 }

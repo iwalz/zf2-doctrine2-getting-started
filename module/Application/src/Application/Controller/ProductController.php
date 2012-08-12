@@ -38,28 +38,4 @@ class ProductController extends AbstractActionController
     	}
         return $view;
     }
-    
-    public function deleteAction()
-    {
-    	$view = new ViewModel();
-    	$request = $this->getRequest();
-    	$entityManager = $this->getEvent()->getParam("entityManager");
-    	
-    	if($request->isPost())
-    	{
-    		$productId = $request->getPost()->product;
-    		$product = $entityManager->find("Product", $productId);
-    		
-    		$entityManager->remove($product);
-    		$entityManager->flush();
-    		$view->setTemplate('application/product/delete_post');
-    	}
-    	else
-    	{
-    		$products = $entityManager->getRepository('Product')->findAll();
-    		$view->setVariable('products', $products);
-    	}
-    	
-    	return $view;
-    }
 }
