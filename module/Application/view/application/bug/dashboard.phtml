@@ -1,1 +1,8 @@
-dashboard
+<form action="/application/bug/dashboard" method="post">
+User: <select name="user">
+<?php foreach($users as $user):?>
+<option value="<?= $user->getId(); ?>"><?= $user->getName(); ?></option>
+<?php endforeach;?>
+</select>
+<input type="submit" value="Bugs anzeigen"/>
+</form>

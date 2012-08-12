@@ -21,27 +21,131 @@ class BugController extends AbstractActionController
     
     public function closeAction()
     {
-    	return new ViewModel();
+    	$view = new ViewModel();
+    	$request = $this->getRequest();
+    	$entityManager = $this->getEvent()->getParam("entityManager");
+    	
+    	if($request->isPost())
+    	{
+    		$bugId = $request->getPost()->bug;
+    		$bug = $entityManager->find('Bug', $bugId);
+    		$bug->close();
+    		$entityManager->flush();
+    		$view->setVariable('bug', $bug);
+    		$view->setTemplate('application/bug/close_post');
+    	}
+    	else
+    	{
+    		$bugs = $entityManager->getRepository('Bug')->findAll();
+    		$view->setVariable('bugs', $bugs);
+    	}
+    	return $view;
     }
     
     public function createAction()
     {
-    	return new ViewModel();
+    	$view = new ViewModel();
+    	$request = $this->getRequest();
+    	$entityManager = $this->getEvent()->getParam("entityManager");
+    	 
+    	if($request->isPost())
+    	{
+    		$strUser = $request->getPost()->user;
+    		$strProductIds = $request->getPost()->products;
+    		$strDescription = $request->getPost()->description;
+
+    		$reporter = $entityManager->find("User", $strUser);
+    		$engineer = $entityManager->find("User", $strUser);
+    		
+    		if (!$reporter || !$engineer) {
+    			echo "No reporter and/or engineer found for the input.\n";
+    			exit(1);
+    		}
+    		
+    		$bug = new \Bug();
+    		$bug->setDescription($strDescription);
+    		$bug->setCreated(new \DateTime("now"));
+    		$bug->setStatus("OPEN");
+
+    		foreach ($strProductIds AS $productId) {
+    			$product = $entityManager->find("Product", $productId);
+    			$bug->assignToProduct($product);
+    		}
+    		
+    		$bug->setReporter($reporter);
+    		$bug->setEngineer($engineer);
+    		
+    		$entityManager->persist($bug);
+    		$entityManager->flush();
+    		
+    		$view->setVariable('bug', $bug);
+    		$view->setTemplate('application/bug/create_post');
+    	}
+    	else 
+    	{
+    		// If you don't have parameters in the query, you can use the getResult() shortcut
+    		$users = $entityManager->getRepository('User')->findAll();
+    		$view->setVariable('users', $users);
+    		
+    		$products = $entityManager->getRepository('Product')->findAll();
+    		$view->setVariable('products', $products);
+    	}
+    	 
+    	return $view;
     }
     
     public function dashboardAction()
     {
-    	return new ViewModel();
+    	$view = new ViewModel();
+    	$request = $this->getRequest();
+    	$entityManager = $this->getEvent()->getParam("entityManager");
+    	
+    	if($request->isPost())
+    	{
+    		$theUserId = $request->getPost()->user;
+    		$dql = "SELECT b, e, r FROM Bug b JOIN b.engineer e JOIN b.reporter r ".
+    			"WHERE b.status = 'OPEN' AND (e.id = ?1 OR r.id = ?1) ORDER BY b.created DESC";
+    	
+    		$myBugs = $entityManager->createQuery($dql)
+    		->setParameter(1, $theUserId)
+    		->setMaxResults(15)
+    		->getResult();
+    	
+			$view->setVariable('mybugs', $myBugs);    		
+    		$view->setTemplate('application/bug/dashboard_post');
+    	}
+    	else
+    	{
+    		$users = $entityManager->getRepository('User')->findAll();
+    		$view->setVariable('users', $users);
+    	}
+    	return $view;
     }
     
     public function listAction()
     {
-    	return new ViewModel();
+    	$view = new ViewModel();
+    	$dql = "SELECT b, e, r FROM Bug b JOIN b.engineer e JOIN b.reporter r ORDER BY b.created DESC";
+    	
+    	$entityManager = $this->getEvent()->getParam("entityManager");
+    	$query = $entityManager->createQuery($dql);
+    	$query->setMaxResults(30);
+    	$bugs = $query->getResult();
+    	
+    	$view->setVariable('bugs', $bugs);
+    	
+    	return $view;
     }
     
     public function listrepositoryAction()
     {
-    	return new ViewModel();
+    	$view = new ViewModel();
+    	$entityManager = $this->getEvent()->getParam("entityManager");
+
+    	$bugs = $entityManager->getRepository('Bug')->getRecentBugs();
+    	
+    	$view->setVariable('bugs', $bugs);
+    	return $view;
     }
     
     public function showAction()

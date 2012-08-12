@@ -1,1 +1,8 @@
-close bug
+<form action="/application/bug/close" method="post">
+Bugs: <select name="bug">
+<?php foreach($bugs as $bug):?>
+<option value="<?= $bug->getId(); ?>"><?= $bug->getDescription(); ?></option>
+<?php endforeach;?>
+</select><br/>
+<input type="submit" value="Close Bug"/>
+</form>

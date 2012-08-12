@@ -1,1 +1,15 @@
-bug create
+<form action="/application/bug/create" method="post">
+User: <select name="user">
+<?php foreach($users as $user):?>
+<option value="<?= $user->getId(); ?>"><?= $user->getName(); ?></option>
+<?php endforeach;?>
+</select><br/>
+Product: 
+<?php foreach($products as $product):?>
+<input type="checkbox" name="products[]" value="<?= $product->getId(); ?>"/><?= $product->getName(); ?><br/>
+<?php endforeach;?>
+</select>
+Description: <input type="text" name="description"/>
+
+<input type="submit" value="Create Bug"/>
+</form>

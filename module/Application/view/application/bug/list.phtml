@@ -1,1 +1,11 @@
-bug list
+<?php 
+foreach($bugs AS $bug) {
+	echo $bug->getDescription()." - ".$bug->getCreated()->format('d.m.Y')."<br/>";
+	echo "    Reported by: ".$bug->getReporter()->getName()."<br/>";
+	echo "    Assigned to: ".$bug->getEngineer()->getName()."<br/>";
+	foreach($bug->getProducts() AS $product) {
+		echo "    Platform: ".$product->getName()."<br/>";
+	}
+	echo "<br/>";
+}
+?>

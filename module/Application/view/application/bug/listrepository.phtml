@@ -1,1 +1,9 @@
-bug repository
+<?php foreach($bugs as $bug):?>
+	<?= $bug->getDescription(); ?> - <?=  $bug->getCreated()->format('d.m.Y')?><br/>
+	Reported by: <?=  $bug->getReporter()->getName(); ?><br/>
+	Assigned to: <?= $bug->getEngineer()->getName(); ?><br/>
+	<?php foreach($bug->getProducts() as $product):?>
+		Platform: <?= $product->getName(); ?>
+	<?php endforeach;?>
+	<hr/>
+<?php endforeach;?>

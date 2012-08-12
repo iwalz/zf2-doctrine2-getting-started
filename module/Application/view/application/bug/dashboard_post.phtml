@@ -1,0 +1,4 @@
+You've assigned <b><?= count($mybugs);?></b> open Bugs<br/>
+<?php foreach($mybugs as $bug):?>
+	<?= $bug->getId(); ?> - <?= $bug->getDescription(); ?><br/>
+<?php endforeach;?>

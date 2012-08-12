@@ -1,20 +1,32 @@
 <div class="row">
 
     <div class="span4">
-        <h2><?php echo $this->translate('Create User') ?></h2>
-        <p><?php echo sprintf($this->translate('Creates a user for the doctrine2 Getting-Started bugtracker')) ?></p>
-        <p><a class="btn btn-success" href="/user"><?php echo $this->translate('Create user') ?> &raquo;</a></p>
+        <h2><?php echo $this->translate('User') ?></h2>
+        <p><?php echo sprintf($this->translate('Manage Users for the doctrine2 Getting-Started bugtracker')) ?></p>
+        <p>
+        	<a style="width:150px;text-align:right" class="btn btn-success" href="/user"><?php echo $this->translate('Create user') ?> &raquo;</a><br/>
+        	<a style="width:150px;text-align:right" class="btn btn-success" href="/application/user/delete"><?php echo $this->translate('Delete user') ?> &raquo;</a><br/>
+        </p>
     </div>
 
     <div class="span4">
-        <h2><?php echo $this->translate('Create Product') ?></h2>
-        <p><?php echo sprintf($this->translate('Creates a product for the doctrine2 Getting-Started bugtracker')) ?></p>
-        <p><a class="btn btn-success" href="/product"><?php echo $this->translate('Create product') ?> &raquo;</a></p>
+        <h2><?php echo $this->translate('Product') ?></h2>
+        <p><?php echo sprintf($this->translate('Manage products for the doctrine2 Getting-Started bugtracker')) ?></p>
+        <p>
+        	<a style="width:150px;text-align:right" class="btn btn-success" href="/product"><?php echo $this->translate('Create product') ?> &raquo;</a><br/>
+        	<a style="width:150px;text-align:right" class="btn btn-success" href="/application/product/delete"><?php echo $this->translate('Delete product') ?> &raquo;</a><br/>
+        </p>
    </div>
 
    <div class="span4">
-       <h2><?php echo $this->translate('Create Bug') ?></h2>
-        <p><?php echo sprintf($this->translate('Creates a bug for the doctrine2 Getting-Started bugtracker')) ?></p>
-        <p><a class="btn btn-success" href="/application/bug/create"><?php echo $this->translate('Create bug') ?> &raquo;</a><a class="btn btn-success" href="/application/bug/list"><?php echo $this->translate('List bug') ?> &raquo;</a><a class="btn btn-success" href="/application/bug/close"><?php echo $this->translate('Close bug') ?> &raquo;</a><a class="btn btn-success" href="/application/bug/listrepository"><?php echo $this->translate('Bug repository') ?> &raquo;</a><a class="btn btn-success" href="/application/bug/dashboard"><?php echo $this->translate('Dashboard') ?> &raquo;</a></p>
+       <h2><?php echo $this->translate('Bug') ?></h2>
+        <p><?php echo sprintf($this->translate('Manage bugs for the doctrine2 Getting-Started bugtracker')) ?></p>
+        <p>
+        	<a style="width:150px;text-align:right" class="btn btn-success" href="/application/bug/create"><?php echo $this->translate('Create bug') ?> &raquo;</a><br/>
+        	<a style="width:150px;text-align:right" class="btn btn-success" href="/application/bug/list"><?php echo $this->translate('List bug') ?> &raquo;</a><br/>
+        	<a style="width:150px;text-align:right" class="btn btn-success" href="/application/bug/close"><?php echo $this->translate('Close bug') ?> &raquo;</a><br/>
+        	<a style="width:150px;text-align:right" class="btn btn-success" href="/application/bug/listrepository"><?php echo $this->translate('Bug repository') ?> &raquo;</a><br/>
+        	<a style="width:150px;text-align:right" class="btn btn-success" href="/application/bug/dashboard"><?php echo $this->translate('Dashboard') ?> &raquo;</a>
+        </p>
    </div>
 </div>

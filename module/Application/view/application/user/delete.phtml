@@ -1,0 +1,9 @@
+<b>Please note:</b> this will delete all referenced Bugs from the user!<br/>
+<form action="/application/user/delete" method="post">
+Product: <select name="user">
+<?php foreach($users as $user):?>
+<option value="<?= $user->getId(); ?>"><?= $user->getName(); ?></option>
+<?php endforeach;?>
+</select>
+<input type="submit" value="Löschen"/>
+</form>
