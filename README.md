@@ -1,4 +1,4 @@
-ZendSkeletonApplication
+ZF2 Skeleton & Doctrine2 Getting Started
 =======================
 
 Introduction
@@ -30,15 +30,17 @@ Alternatively, you can install using native git submodules:
 Creating database scheme
 ------------------------
 If you've installed doctrine from within this composer file, you've to change "vendor/doctrine/orm/bin/doctrine.php" on line on line 28:
-
-   $configFile = getcwd() . DIRECTORY_SEPARATOR . 'config'. DIRECTORY_SEPARATOR .'doctrine'. DIRECTORY_SEPARATOR .'cli-config.php';
-
+```php
+   $configFile = getcwd() . DIRECTORY_SEPARATOR . 
+   		'config'. DIRECTORY_SEPARATOR .
+   		'doctrine'. DIRECTORY_SEPARATOR .'cli-config.php';
+```
 After that you can create the database scheme:
 
     php vendor/doctrine/orm/bin/doctrine orm:schema-tool:create
 
 Maybe vou've to change the connectionsettings in bootstrap_config.php and bootstrap_doctrine.php:
-
+```php
 // database configuration parameters
 $conn = array(
     'driver'   => 'pdo_mysql',
@@ -47,13 +49,13 @@ $conn = array(
     'user'     => 'test',
     'password' => 'test'
 );
-
+```
 
 Virtual Host
 ------------
 Afterwards, set up a virtual host to point to the public/ directory of the
 project and you should be ready to go!
-
+```xml
 <VirtualHost *:80>
 	ServerName skeleton.local
 	DocumentRoot "/var/www/skeleton/public/"
@@ -65,3 +67,4 @@ project and you should be ready to go!
 	</Directory>
 
 </VirtualHost>
+```
