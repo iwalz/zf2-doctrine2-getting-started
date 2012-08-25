@@ -37,7 +37,7 @@ class BugController extends AbstractActionController
     {
     	$view = new ViewModel();
     	$request = $this->getRequest();
-    	$entityManager = $this->getEvent()->getParam("entityManager");
+    	$entityManager = $this->getEntityManager();
     	
     	if($request->isPost())
     	{
@@ -112,7 +112,7 @@ class BugController extends AbstractActionController
     {
     	$view = new ViewModel();
     	$request = $this->getRequest();
-    	$entityManager = $this->getEvent()->getParam("entityManager");
+    	$entityManager = $this->getEntityManager();
     	
     	if($request->isPost())
     	{
@@ -141,7 +141,7 @@ class BugController extends AbstractActionController
     	$view = new ViewModel();
     	$dql = "SELECT b, e, r FROM Bug b JOIN b.engineer e JOIN b.reporter r ORDER BY b.created DESC";
     	
-    	$entityManager = $this->getEvent()->getParam("entityManager");
+    	$entityManager = $this->getEntityManager();
     	$query = $entityManager->createQuery($dql);
     	$query->setMaxResults(30);
     	$bugs = $query->getResult();
@@ -154,7 +154,7 @@ class BugController extends AbstractActionController
     public function listrepositoryAction()
     {
     	$view = new ViewModel();
-    	$entityManager = $this->getEvent()->getParam("entityManager");
+    	$entityManager = $this->getEntityManager();
 
     	$bugs = $entityManager->getRepository('Bug')->getRecentBugs();
     	
@@ -164,6 +164,7 @@ class BugController extends AbstractActionController
     
     public function showAction()
     {
-    	return new ViewModel();
+        $view = new ViewModel();
+    	return $view;
     }
 }

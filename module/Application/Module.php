@@ -20,7 +20,7 @@ class Module
         $eventManager        = $e->getApplication()->getEventManager();
         $moduleRouteListener = new ModuleRouteListener();
         $moduleRouteListener->attach($eventManager);
-        $e->setParam("entityManager", $this->getEntityManager());
+//         $e->setParam("entityManager", $this->getEntityManager());
     }
 
     public function getConfig()

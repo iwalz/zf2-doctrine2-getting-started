@@ -21,15 +21,9 @@ and use composer to install dependencies:
     cd ZendSkeletonApplication
     php composer.phar install
 
-Using Git submodules
---------------------
-Alternatively, you can install using native git submodules:
-
-    git clone git://github.com/zendframework/ZendSkeletonApplication.git --recursive
-
 Creating database scheme
 ------------------------
-If you've installed doctrine from within this composer file, you've to change "vendor/doctrine/orm/bin/doctrine.php" on line on line 28:
+If you've installed doctrine from within this composer file, you've to change "vendor/bin/doctrine.php" on line on line 28:
 ```php
    $configFile = getcwd() . DIRECTORY_SEPARATOR . 
    		'config'. DIRECTORY_SEPARATOR .
@@ -37,7 +31,7 @@ If you've installed doctrine from within this composer file, you've to change "v
 ```
 After that you can create the database scheme:
 
-    php vendor/doctrine/orm/bin/doctrine orm:schema-tool:create
+    php vendor/bin/doctrine orm:schema-tool:create
 
 Maybe vou've to change the connectionsettings in bootstrap_config.php and bootstrap_doctrine.php:
 ```php
@@ -50,6 +44,13 @@ $conn = array(
     'password' => 'test'
 );
 ```
+
+Generating Proxy files
+----------------------
+To re-generate the proxy files based on the module configuration, you've to run:
+
+    php vendor/bin/doctrine orm:generate-proxies data/DoctrineORMModule/Proxy
+
 
 Virtual Host
 ------------
