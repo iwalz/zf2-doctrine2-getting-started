@@ -1,6 +1,5 @@
 <?php
 use Doctrine\Common\Collections\ArrayCollection;
-
 /**
  * @Entity(repositoryClass="BugRepository") @Table(name="bugs")
  */

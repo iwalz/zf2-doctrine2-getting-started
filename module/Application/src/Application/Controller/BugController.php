@@ -10,10 +10,24 @@
 namespace Application\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
+use Doctrine\ORM\EntityManager;
 use Zend\View\Model\ViewModel;
 
 class BugController extends AbstractActionController
 {
+    /**
+     * @var Doctrine\ORM\EntityManager
+     */
+    protected $em;
+    
+    public function getEntityManager()
+    {
+        if (null === $this->em) {
+            $this->em = $this->getServiceLocator()->get('doctrine.entitymanager.orm_default');
+        }
+        return $this->em;
+    }
+    
     public function indexAction()
     {
         return new ViewModel();
@@ -46,7 +60,7 @@ class BugController extends AbstractActionController
     {
     	$view = new ViewModel();
     	$request = $this->getRequest();
-    	$entityManager = $this->getEvent()->getParam("entityManager");
+    	$entityManager = $this->getEntityManager();
     	 
     	if($request->isPost())
     	{
