@@ -11,14 +11,14 @@ It combines this project with the getting started tutorial of doctrine2, availab
 Installation
 ------------
 
-Using Composer (recommended)
+Using Composer
 ----------------------------
 The recommended way to get a working copy of this project is to clone the repository
 and use composer to install dependencies:
 
     cd my/project/dir
-    git clone git://github.com/zendframework/ZendSkeletonApplication.git
-    cd ZendSkeletonApplication
+    git clone git://github.com/iwalz/zf2-doctrine2-getting-started.git
+    cd zf2-doctrine2-getting-started
     php composer.phar install
 
 Creating database scheme
@@ -143,18 +143,19 @@ return array(
 
 Initialize ZendDeveloperTools Toolbar
 -------------------------------------
-Copy "vendor/zendframework/zend-developer-tools/config/zenddevelopertools.local.php.dist" to "config/autoload/" directory
+Copy "vendor/zendframework/zend-developer-tools/config/zenddevelopertools.local.php.dist" to "config/autoload/zenddevelopertools.local.php" directory
 
 Virtual Host
 ------------
 Afterwards, set up a virtual host to point to the public/ directory of the
 project and you should be ready to go!
+
 ```xml
 <VirtualHost *:80>
-	ServerName skeleton.local
-	DocumentRoot "/var/www/skeleton/public/"
+	ServerName zf2-doctrine2.local
+	DocumentRoot "/var/www/zf2-doctrine2/public/"
 	
-	<Directory "/var/www/skeleton/public">
+	<Directory "/var/www/zf2-doctrine2/public">
 		AllowOverride All
 		Order allow,deny
 		allow from all
