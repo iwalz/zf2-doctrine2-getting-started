@@ -1,3 +1,4 @@
+<a href="<?php echo $this->url('bug') ?>">&lt;&lt; Back to Bugtracker</a><br/>
 <?php foreach($bugs as $bug):?>
 	<?= $bug->getDescription(); ?> - <?=  $bug->getCreated()->format('d.m.Y')?><br/>
 	Reported by: <?=  $bug->getReporter()->getName(); ?><br/>

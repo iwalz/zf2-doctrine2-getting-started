@@ -33,8 +33,8 @@
           <a class="brand" href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Skeleton Application') ?></a>
           <div class="nav-collapse">
             <ul class="nav">
-              <li class="active"><a href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Home') ?></a></li>
-              <li class="active"><a href="<?php echo $this->url('bug') ?>"><?php echo $this->translate('Bug') ?></a></li>
+              <li class="<?php echo ($this->url() == '/' ? 'active' : 'inactive') ?>"><a href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Home') ?></a></li>
+              <li class="<?php echo ($this->url() != '/' ? 'active' : 'inactive') ?>"><a href="<?php echo $this->url('bug') ?>"><?php echo $this->translate('Bug') ?></a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -46,12 +46,12 @@
     	<h1><?php echo sprintf($this->translate('Welcome to %sZend Framework 2%s'), '<span class="zf-green">', '</span>') ?></h1>
     	<p><?php echo sprintf($this->translate('
     			Congratulations! 
-    			You have successfully installed the %sZF2 Skeleton Application%s and the %sdoctrine2 Getting-Started%s. 
+    			You\'ve successfully installed a fork of the %sZF2 Skeleton Application%s in combination with %sdoctrine2 Getting-Started%s. 
     			You are currently running Zend Framework version %s. 
-    			This skeleton can serve as a simple starting point for you to begin building your application on ZF2.'), '<a href="https://github.com/zendframework/ZendSkeletonApplication" target="_blank">', '</a>', '<a href="https://github.com/doctrine/doctrine2-orm-tutorial" target="_blank">', '</a>', \Zend\Version\Version::VERSION) ?></p>
+    			This skeleton can serve as a simple starting point for you to begin building your application on ZF2 with the doctrine2-module integration.'), '<a href="https://github.com/zendframework/ZendSkeletonApplication" target="_blank">', '</a>', '<a href="https://github.com/doctrine/doctrine2-orm-tutorial" target="_blank">', '</a>', \Zend\Version\Version::VERSION) ?></p>
     	<p><a class="btn btn-success btn-large" href="https://github.com/zendframework/zf2" target="_blank"><?php echo $this->translate('Fork Zend Framework 2 on GitHub') ?> &raquo;</a>
     	<a class="btn btn-success btn-large" href="https://github.com/doctrine/doctrine2-orm-tutorial" target="_blank"><?php echo $this->translate('Fork doctrine2 Getting-Started on GitHub') ?> &raquo;</a>
-    	<a class="btn btn-success btn-large" href="https://github.com/iwalz/ZendSkeletonApplication" target="_blank"><?php echo $this->translate('Fork doctrine2/zf2 Skeleton on GitHub') ?> &raquo;</a></p>
+    	<a class="btn btn-success btn-large" href="https://github.com/iwalz/zf2-doctrine2-getting-started" target="_blank"><?php echo $this->translate('Fork doctrine2/zf2 Skeleton on GitHub') ?> &raquo;</a></p>
 	</div>
       <?php echo $this->content; ?>
 
