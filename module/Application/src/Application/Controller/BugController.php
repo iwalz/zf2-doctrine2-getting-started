@@ -165,6 +165,21 @@ class BugController extends AbstractActionController
     public function showAction()
     {
         $view = new ViewModel();
+        $request = $this->getRequest();
+        $entityManager = $this->getEntityManager();
+
+        if($request->isPost())
+        {
+            $strBug = $request->getPost()->bug;
+            $bug = $entityManager->find("Bug", $strBug);
+            $view->setVariable('bug', $bug);
+            $view->setTemplate('application/bug/show_post');
+        }
+        else
+        {
+            $bugs = $entityManager->getRepository('Bug')->findAll();
+            $view->setVariable('bugs', $bugs);
+        }
     	return $view;
     }
 }

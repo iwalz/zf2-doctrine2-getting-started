@@ -1,1 +1,11 @@
-bug show
+<a href="<?php echo $this->url('bug') ?>">&lt;&lt; Back to Bugtracker</a><br/>
+<form action="/application/bug/show" method="post">
+<b>Bugs</b>
+<p><select name="bug">
+<?php foreach($bugs as $bug):?>
+<option value="<?= $bug->getId(); ?>"><?= $bug->getDescription(); ?></option>
+<?php endforeach;?>
+</select>
+<input type="submit" value="Show bug"/>
+</form>
+</p>

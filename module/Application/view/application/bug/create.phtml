@@ -1,16 +1,32 @@
 <a href="<?php echo $this->url('bug') ?>">&lt;&lt; Back to Bugtracker</a><br/>
 <form action="/application/bug/create" method="post">
-User: <select name="user">
-<?php foreach($users as $user):?>
-<option value="<?= $user->getId(); ?>"><?= $user->getName(); ?></option>
-<?php endforeach;?>
-</select><br/>
-Product: 
-<?php foreach($products as $product):?>
-<input type="checkbox" name="products[]" value="<?= $product->getId(); ?>"/><?= $product->getName(); ?><br/>
-<?php endforeach;?>
-</select>
-Description: <input type="text" name="description"/>
-
-<input type="submit" value="Create Bug"/>
+    <table>
+        <tr>
+            <td>User:</td>
+            <td>
+                <select name="user">
+                    <?php foreach($users as $user):?>
+                        <option value="<?= $user->getId(); ?>"><?= $user->getName(); ?></option>
+                    <?php endforeach;?>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top">Products:</td>
+            <td> 
+                <?php foreach($products as $product):?>
+                    <input type="checkbox" name="products[]" value="<?= $product->getId(); ?>"/><?= $product->getName(); ?><br/>
+                <?php endforeach;?>
+            </td>
+        </tr>
+        <tr>
+            <td>Description:</td>
+            <td><input type="text" name="description"/></td>
+        </tr>
+        <tr>
+            <td colspan="2" align="right">
+                <input type="submit" value="Create Bug"/>
+            </td>
+        </tr>
+    </table>
 </form>

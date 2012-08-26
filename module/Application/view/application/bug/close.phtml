@@ -4,6 +4,6 @@ Bugs: <select name="bug">
 <?php foreach($bugs as $bug):?>
 <option value="<?= $bug->getId(); ?>"><?= $bug->getDescription(); ?></option>
 <?php endforeach;?>
-</select><br/>
+</select>
 <input type="submit" value="Close Bug"/>
 </form>

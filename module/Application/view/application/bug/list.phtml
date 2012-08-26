@@ -1,12 +1,11 @@
 <a href="<?php echo $this->url('bug') ?>">&lt;&lt; Back to Bugtracker</a><br/>
-<?php 
-foreach($bugs AS $bug) {
-	echo $bug->getDescription()." - ".$bug->getCreated()->format('d.m.Y')."<br/>";
-	echo "    Reported by: ".$bug->getReporter()->getName()."<br/>";
-	echo "    Assigned to: ".$bug->getEngineer()->getName()."<br/>";
-	foreach($bug->getProducts() AS $product) {
-		echo "    Platform: ".$product->getName()."<br/>";
-	}
-	echo "<br/>";
-}
-?>
+<?php foreach($bugs AS $bug): ?>
+	<b><?= $bug->getDescription(); ?></b> (<?= $bug->getCreated()->format('d.m.Y'); ?>)
+	Reported:  <?= $bug->getReporter()->getName() ?> - 
+	Assigned:  <?= $bug->getEngineer()->getName() ?><br/>
+	Platforms:<ul>
+	<?php foreach($bug->getProducts() as $product):?>
+		 <li><?= $product->getName() ?></li>
+	<?php endforeach; ?>
+	</ul>
+<?php endforeach; ?>

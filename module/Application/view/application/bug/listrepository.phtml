@@ -1,10 +1,12 @@
+
 <a href="<?php echo $this->url('bug') ?>">&lt;&lt; Back to Bugtracker</a><br/>
-<?php foreach($bugs as $bug):?>
-	<?= $bug->getDescription(); ?> - <?=  $bug->getCreated()->format('d.m.Y')?><br/>
-	Reported by: <?=  $bug->getReporter()->getName(); ?><br/>
-	Assigned to: <?= $bug->getEngineer()->getName(); ?><br/>
+<?php foreach($bugs AS $bug): ?>
+	<b><?= $bug->getDescription(); ?></b> (<?= $bug->getCreated()->format('d.m.Y'); ?>)
+	Reported:  <?= $bug->getReporter()->getName() ?> - 
+	Assigned:  <?= $bug->getEngineer()->getName() ?><br/>
+	Platforms:<ul>
 	<?php foreach($bug->getProducts() as $product):?>
-		Platform: <?= $product->getName(); ?>
-	<?php endforeach;?>
-	<hr/>
-<?php endforeach;?>
+		 <li><?= $product->getName() ?></li>
+	<?php endforeach; ?>
+	</ul>
+<?php endforeach; ?>
