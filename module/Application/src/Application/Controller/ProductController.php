@@ -17,6 +17,19 @@ Zend\View\Resolver;
 
 class ProductController extends AbstractActionController
 {
+    /**
+     * @var Doctrine\ORM\EntityManager
+     */
+    protected $em = null;
+    
+    public function getEntityManager()
+    {
+        if (null === $this->em) {
+            $this->em = $this->getServiceLocator()->get('doctrine.entitymanager.orm_default');
+        }
+        return $this->em;
+    }
+    
     public function createAction()
     {
     	$view = new ViewModel();
@@ -24,7 +37,7 @@ class ProductController extends AbstractActionController
     	
     	if($request->isPost())
     	{
-			$entityManager = $this->getEvent()->getParam("entityManager");
+			$entityManager = $this->getEntityManager();
     		
     		$strProduct = $request->getPost()->product;
     		$product = new \Product();
