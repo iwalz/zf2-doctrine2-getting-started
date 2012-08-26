@@ -1,4 +1,5 @@
-<b>Please note:</b> this will delete all referenced Bugs from the user!<br/>
+<a href="<?php echo $this->url('bug') ?>">&lt;&lt; Back to Bugtracker</a><br/>
+<p><b>Please note:</b> this will delete all referenced Bugs from the user!</p><br/>
 <form action="/application/user/delete" method="post">
 Product: <select name="user">
 <?php foreach($users as $user):?>
