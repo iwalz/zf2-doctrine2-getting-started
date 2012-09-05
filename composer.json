@@ -10,10 +10,10 @@
     "minimum-stability": "dev",
     "require": {
         "php": ">=5.3.3",
-        "zendframework/zendframework": "dev-master#1736dd000849a08b9b1ff64bf4f9eb6532407432"
+	"zendframework/zendframework": "2.*",
         "zendframework/zend-developer-tools": "dev-master",
         "doctrine/doctrine-module": "dev-master",
-		"doctrine/doctrine-orm-module": "dev-master"
+	"doctrine/doctrine-orm-module": "dev-master"
     }
     
 }
