@@ -29,6 +29,13 @@ If you've installed doctrine from within this composer file, you've to change "v
    		'config'. DIRECTORY_SEPARATOR .
    		'doctrine'. DIRECTORY_SEPARATOR .'cli-config.php';
 ```
+
+*Note:*
+If you run 
+    php bin/prepareconfig.php
+
+This will be done automatically.
+
 After that you can create the database scheme:
 
     php vendor/bin/doctrine orm:schema-tool:create
@@ -53,6 +60,13 @@ To re-generate the proxy files based on the module configuration, you've to run:
 
 Configuring the doctrine module
 -------------------------------
+
+*Note:*
+If you run 
+    php bin/prepareconfig.php
+
+This will be done automatically.
+
 For the current project, the module.config.php from "vendor/doctrine/doctrine-orm-module/config/module.config.php" has to look like this:
 
 ```php
@@ -143,6 +157,12 @@ return array(
 
 Initialize ZendDeveloperTools Toolbar
 -------------------------------------
+*Note:*
+If you run 
+    php bin/prepareconfig.php
+
+This will be done automatically.
+
 Copy "vendor/zendframework/zend-developer-tools/config/zenddevelopertools.local.php.dist" to "config/autoload/zenddevelopertools.local.php" directory
 
 Virtual Host
