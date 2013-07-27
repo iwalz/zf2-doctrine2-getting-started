@@ -1,11 +1,10 @@
 <?php
 // bootstrap_doctrine.php
+use Doctrine\ORM\Tools\Setup;
+use Doctrine\ORM\EntityManager;
 
 // See :doc:`Configuration <../reference/configuration>` for up to date autoloading details.
-use Doctrine\ORM\Tools\Setup;
-
-require_once "Doctrine\ORM\Tools\Setup.php";
-Setup::registerAutoloadPEAR();
+require_once "vendor/autoload.php";
 
 // Create a simple "default" Doctrine ORM configuration for XML Mapping
 $isDevMode = true;
