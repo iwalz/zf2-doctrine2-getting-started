@@ -1,5 +1,7 @@
 <?php
 // bootstrap_doctrine.php
+
+// See :doc:`Configuration <../reference/configuration>` for up to date autoloading details.
 use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
 
