@@ -19,6 +19,7 @@ and use composer to install dependencies:
     cd my/project/dir
     git clone git://github.com/iwalz/zf2-doctrine2-getting-started.git
     cd zf2-doctrine2-getting-started
+    php composer.phar self-update
     php composer.phar install
 
 Creating database scheme
